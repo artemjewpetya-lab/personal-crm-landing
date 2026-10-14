@@ -1,0 +1,40 @@
+---
+// Inlines an SVG from design/icons so it can be colored with currentColor and sized with classes
+export type IconName =
+  | "arrow-right"
+  | "calendar"
+  | "check"
+  | "contact-card"
+  | "face-sad"
+  | "heart"
+  | "logo-mark"
+  | "map-pin"
+  | "message"
+  | "pencil"
+  | "user";
+
+interface Props {
+  name: IconName;
+  class?: string;
+}
+
+const icons = import.meta.glob<string>("../../design/icons/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+});
+
+const { name, class: className = "" } = Astro.props;
+const source = icons[`../../design/icons/${name}.svg`];
+if (!source) {
+  throw new Error(`Unknown icon: ${name}`);
+}
+
+// Size comes from classes, so drop width/height from the root <svg> tag only (shapes inside keep theirs)
+const svg = source.replace(/<svg([^>]*)>/, (_, attributes: string) => {
+  const rest = attributes.replace(/\s(?:width|height)="[^"]*"/g, "");
+  return `<svg${rest} class="shrink-0 ${className}" aria-hidden="true" focusable="false">`;
+});
+---
+
+<Fragment set:html={svg} />

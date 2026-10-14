@@ -1,0 +1,174 @@
+/* Design tokens for the Personal CRM landing (Tailwind CSS 4).
+   Values come from design/README.md. Suffix -lg = desktop value, used with the lg: variant (>= 1024px). */
+@theme {
+  /* Fonts */
+  --font-display: "Unbounded Variable", "Unbounded", sans-serif;
+  --font-sans: "Onest Variable", "Onest", system-ui, sans-serif;
+
+  /* Base palette (palette 40) */
+  --color-ink: #1B2963;
+  --color-plum: #58304C;
+  --color-ochre: #976824;
+  --color-rose: #A85A78;
+  --color-dusty: #E9D3CA;
+
+  /* Surfaces */
+  --color-paper: #F5ECE7;
+  --color-card: #FFFBF8;
+  --color-blush: #F3E6E0;
+  --color-bubble: #EFE3DD;
+
+  /* Text on light surfaces */
+  --color-ink-soft: #3D4570;
+  --color-muted: #5A5F80;
+  --color-plum-ink: #3A1F33;
+  --color-bubble-ink: #6A5F78;
+
+  /* Lines */
+  --color-line: #D9C6BE;
+  --color-divider: #E6D6CF;
+
+  /* Inside the navy panel (Problem) */
+  --color-navy-raised: #26357D;
+  --color-navy-chip: #2A3A85;
+  --color-navy-avatar: #3A4A93;
+  --color-navy-line: #5A68AD;
+  --color-on-navy: #D5D9EE;
+  --color-on-navy-label: #C9CDE6;
+  --color-on-navy-muted: #AEB4DA;
+  --color-rose-light: #F0B9CC;
+
+  /* Inside plum surfaces */
+  --color-plum-raised: #6E4362;
+  --color-plum-hover: #48273E; /* proposal: hover state, not drawn in the mockup */
+  --color-on-plum: #E9CFC5;
+  --color-on-plum-accent: #F3D9E3;
+
+  /* Inside ochre surfaces */
+  --color-ochre-raised: #A97B3A;
+  --color-on-ochre: #F6E6CC;
+  --color-on-ochre-accent: #FFF3DF;
+
+  /* Type scale */
+  --text-h1: 1.875rem;
+  --text-h1--line-height: 1.16;
+  --text-h1--letter-spacing: -0.025em;
+  --text-h1-lg: 3.375rem;
+  --text-h1-lg--line-height: 1.12;
+  --text-h1-lg--letter-spacing: -0.03em;
+
+  --text-h2: 1.375rem;
+  --text-h2--line-height: 1.25;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h2-lg: 2.25rem;
+  --text-h2-lg--line-height: 1.22;
+  --text-h2-lg--letter-spacing: -0.02em;
+
+  --text-cta: 1.6875rem;
+  --text-cta--line-height: 1.2;
+  --text-cta--letter-spacing: -0.025em;
+  --text-cta-lg: 3rem;
+  --text-cta-lg--line-height: 1.15;
+  --text-cta-lg--letter-spacing: -0.03em;
+
+  --text-statement: 1.125rem;
+  --text-statement--line-height: 1.3;
+  --text-statement-lg: 1.375rem;
+  --text-statement-lg--line-height: 1.3;
+
+  --text-callout: 0.9375rem;
+  --text-callout--line-height: 1.35;
+  --text-callout-lg: 1.125rem;
+  --text-callout-lg--line-height: 1.35;
+
+  --text-tile-title: 0.875rem;
+  --text-tile-title--line-height: 1.3;
+  --text-tile-title-lg: 1.125rem;
+  --text-tile-title-lg--line-height: 1.3;
+
+  --text-lead: 1rem;
+  --text-lead--line-height: 1.5;
+  --text-lead-lg: 1.1875rem;
+  --text-lead-lg--line-height: 1.55;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.5;
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.55;
+
+  --text-tile: 0.875rem;
+  --text-tile--line-height: 1.4;
+  --text-tile-lg: 1.0625rem;
+  --text-tile-lg--line-height: 1.4;
+
+  --text-name: 0.9375rem;
+  --text-name-lg: 1.1875rem;
+
+  --text-number: 1.875rem;
+  --text-number--line-height: 1;
+  --text-number--letter-spacing: -0.03em;
+  --text-number-lg: 2.75rem;
+  --text-number-lg--line-height: 1;
+  --text-number-lg--letter-spacing: -0.03em;
+
+  --text-button: 1.0625rem;
+  --text-button-lg: 1.125rem;
+
+  --text-bubble: 1rem;
+  --text-bubble-lg: 1.0625rem;
+
+  --text-caption: 0.8125rem;
+  --text-caption-lg: 0.9375rem;
+
+  --text-chip: 0.8125rem;
+  --text-chip-lg: 0.875rem;
+
+  --text-label: 0.6875rem;
+  --text-label--letter-spacing: 0.06em;
+  --text-label-lg: 0.75rem;
+  --text-label-lg--letter-spacing: 0.06em;
+
+  --text-logo: 0.9375rem;
+  --text-logo-lg: 1.0625rem;
+
+  /* Spacing */
+  --spacing-gutter: 1.25rem;      /* 20px: page side padding on mobile */
+  --spacing-gutter-card: 0.875rem; /* 14px: hero card side margin on mobile */
+  --spacing-edge: 0.5rem;          /* 8px: dark panels side margin on mobile */
+  --spacing-gutter-lg: 2.5rem;     /* 40px: page side padding on desktop */
+  --spacing-section: 3.25rem;      /* 52px: between sections on mobile */
+  --spacing-section-lg: 7rem;      /* 112px: between sections on desktop */
+  --spacing-columns: 3.5rem;       /* 56px: gap between desktop columns */
+
+  /* Widths */
+  --container-page: 75rem;   /* 1200px */
+  --container-narrow: 35rem; /* 560px: mobile layout on tablets */
+
+  /* Radii */
+  --radius-tile: 1.25rem;
+  --radius-tile-lg: 1.5rem;
+  --radius-card: 1.75rem;
+  --radius-card-lg: 2.25rem;
+  --radius-panel: 2rem;
+  --radius-panel-lg: 2.5rem;
+  --radius-benefit: 1.5rem;
+  --radius-benefit-lg: 1.875rem;
+  --radius-button: 1rem;
+  --radius-button-lg: 1.125rem;
+
+  /* Additions: values used in design/*.html that the README token list does not cover */
+  --color-white: #FFFFFF;
+
+  --text-logo--letter-spacing: -0.01em;
+  --text-logo-lg--letter-spacing: -0.01em;
+  --text-badge: 0.75rem;       /* 12px: benefit numbers, small pills inside illustrations */
+  --text-badge-lg: 0.8125rem;  /* 13px */
+
+  --radius-logo: 0.625rem;        /* 10px: logo mark */
+  --radius-logo-lg: 0.75rem;      /* 12px */
+  --radius-icon-box: 0.75rem;     /* 12px: square behind the contact-card icon */
+  --radius-icon-box-lg: 0.875rem; /* 14px */
+  --radius-bubble-tail: 0.375rem; /* 6px: bottom-left corner of chat bubbles */
+
+  --border-ring: 1.5px;           /* outline of the "?" circles in the Problem list */
+}

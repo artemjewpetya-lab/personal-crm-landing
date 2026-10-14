@@ -1,0 +1,42 @@
+---
+import AppButton from "./AppButton.astro";
+
+// Decorative stack of contact avatars
+const avatars = [
+  { initials: "АС", color: "bg-rose" },
+  { initials: "МК", color: "bg-ochre" },
+  { initials: "ОП", color: "bg-ink" },
+  { initials: "ТН", color: "bg-dusty text-plum" },
+];
+---
+
+<section
+  aria-labelledby="cta-title"
+  class="mx-edge mt-section flex flex-col gap-5.5 rounded-panel bg-plum px-4.5 pt-8 pb-7 text-white lg:mx-0 lg:mt-section-lg lg:items-center lg:gap-7 lg:rounded-panel-lg lg:px-16 lg:py-20 lg:text-center"
+>
+  <div aria-hidden="true" class="flex">
+    {
+      avatars.map(({ initials, color }, index) => (
+        <span
+          class:list={[
+            "flex size-11 items-center justify-center rounded-full border-3 border-plum font-display text-caption font-semibold",
+            "lg:size-14 lg:border-4 lg:text-caption-lg",
+            index > 0 && "-ml-2.5 lg:-ml-3",
+            color,
+          ]}
+        >
+          {initials}
+        </span>
+      ))
+    }
+  </div>
+
+  <h2 id="cta-title" class="font-display text-cta font-semibold lg:max-w-190 lg:text-cta-lg">
+    Начните помнить людей, а не номера
+  </h2>
+
+  <div class="flex flex-col gap-2.5 lg:w-full lg:max-w-95 lg:items-center lg:gap-3">
+    <AppButton variant="light" />
+    <span class="text-center text-caption text-on-plum lg:text-caption-lg">Бесплатно</span>
+  </div>
+</section>

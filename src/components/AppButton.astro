@@ -1,0 +1,26 @@
+---
+import { APP_URL } from "../config";
+import Icon from "./Icon.astro";
+
+interface Props {
+  variant?: "primary" | "light";
+  class?: string;
+}
+
+const { variant = "primary", class: className } = Astro.props;
+---
+
+<a
+  href={APP_URL}
+  class:list={[
+    "flex h-14.5 items-center justify-center gap-2.5 rounded-button text-button font-semibold",
+    "focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-ochre",
+    "lg:h-16 lg:gap-3 lg:rounded-button-lg lg:text-button-lg",
+    variant === "primary" && "bg-plum text-white hover:bg-plum-hover lg:inline-flex lg:px-8",
+    variant === "light" && "w-full bg-paper text-plum hover:bg-card",
+    className,
+  ]}
+>
+  Открыть приложение
+  <Icon name="arrow-right" class="size-5 lg:size-5.5" />
+</a>

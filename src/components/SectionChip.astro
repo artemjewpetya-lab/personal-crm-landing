@@ -1,0 +1,18 @@
+---
+// Small pill above a section title: "Знакомо?", "Решение"
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<span
+  class:list={[
+    "justify-self-start self-start rounded-full px-3 py-1.5 text-chip font-semibold",
+    "lg:px-3.5 lg:py-1.75 lg:text-chip-lg",
+    className,
+  ]}
+>
+  <slot />
+</span>

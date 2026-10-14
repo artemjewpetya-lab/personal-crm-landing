@@ -1,0 +1,78 @@
+---
+import Icon from "./Icon.astro";
+import SectionChip from "./SectionChip.astro";
+
+const fields = ["ФИО", "Телефон", "Почта"];
+
+const tile = "flex flex-col justify-between gap-3.5 rounded-tile p-3.5 lg:min-h-45 lg:gap-6 lg:rounded-tile-lg lg:p-5.5";
+const tileIcon = "size-5.5 lg:size-7";
+const tileTitle = "font-display text-tile-title font-semibold lg:text-tile-title-lg";
+const interestChip = "rounded-full bg-card px-2 py-0.75 text-badge font-medium lg:px-2.75 lg:py-1 lg:text-chip-lg";
+---
+
+<section
+  aria-labelledby="solution-title"
+  class="mt-section flex flex-col gap-4 px-gutter lg:mt-section-lg lg:gap-6 lg:px-0"
+>
+  <SectionChip class="bg-dusty text-plum">Решение</SectionChip>
+
+  <h2 id="solution-title" class="font-display text-h2 font-semibold lg:max-w-205 lg:text-h2-lg">
+    К каждому контакту можно добавить не только ФИО, телефон и почту
+  </h2>
+
+  <div
+    class="-mx-1.5 mt-1 flex flex-col gap-2 rounded-card bg-card p-3 lg:mx-0 lg:mt-0 lg:gap-3.5 lg:rounded-card-lg lg:p-5"
+  >
+    <div class="flex flex-col gap-2 lg:flex-row lg:flex-wrap lg:items-center lg:gap-4 lg:px-1 lg:pt-1">
+      <ul class="flex flex-wrap items-center gap-1.5 px-1 pt-1 pb-0.5 lg:gap-2 lg:p-0">
+        {
+          fields.map((field) => (
+            <li class="rounded-full border border-line px-3 py-1.75 text-caption font-medium text-muted lg:px-4 lg:py-2.25 lg:text-caption-lg">
+              {field}
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex items-center gap-2.5 px-1 py-0.5 lg:grow lg:basis-50 lg:gap-3.5 lg:p-0">
+        <span aria-hidden="true" class="h-px flex-1 bg-divider"></span>
+        <span class="font-display text-caption font-semibold text-ochre lg:text-caption-lg">но и</span>
+        <span aria-hidden="true" class="h-px flex-1 bg-divider"></span>
+      </div>
+    </div>
+
+    <ul class="grid grid-cols-2 gap-2 lg:grid-cols-4 lg:gap-2.5">
+      <li class:list={[tile, "bg-ink text-paper"]}>
+        <Icon name="map-pin" class={`${tileIcon} text-on-navy-label`} />
+        <span class={tileTitle}>История знакомства</span>
+      </li>
+      <li class:list={[tile, "bg-dusty"]}>
+        <span aria-hidden="true" class="flex flex-wrap gap-1 lg:gap-1.5">
+          <span class={interestChip}>бег</span>
+          <span class={interestChip}>джаз</span>
+        </span>
+        <span class:list={[tileTitle, "text-plum"]}>Интересы</span>
+      </li>
+      <li class:list={[tile, "bg-ochre text-white"]}>
+        <Icon name="calendar" class={`${tileIcon} text-on-ochre`} />
+        <span class={tileTitle}>Важные даты</span>
+      </li>
+      <li class:list={[tile, "bg-blush"]}>
+        <Icon name="pencil" class={`${tileIcon} text-rose`} />
+        <span class:list={[tileTitle, "text-plum"]}>Любые заметки</span>
+      </li>
+    </ul>
+  </div>
+
+  <div
+    class="-mx-1.5 flex items-start gap-3 rounded-tile bg-dusty p-4 lg:mx-0 lg:items-center lg:gap-4 lg:rounded-tile-lg lg:px-6 lg:py-5.5"
+  >
+    <span
+      class="flex size-9 shrink-0 items-center justify-center rounded-icon-box bg-plum text-white lg:size-12 lg:rounded-icon-box-lg"
+    >
+      <Icon name="contact-card" class="size-4.5 lg:size-5.5" />
+    </span>
+    <p class="text-lead font-medium text-plum-ink lg:text-lead-lg">
+      Перед встречей достаточно открыть карточку, и все детали снова под рукой.
+    </p>
+  </div>
+</section>

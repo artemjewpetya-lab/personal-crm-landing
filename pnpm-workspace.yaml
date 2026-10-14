@@ -1,0 +1,4 @@
+# Own pnpm root: keeps this project separate from the app folder around it
+allowBuilds:
+  esbuild: true
+  sharp: false

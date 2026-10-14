@@ -1,0 +1,27 @@
+---
+import AppButton from "./AppButton.astro";
+import ContactCardMock from "./ContactCardMock.astro";
+---
+
+<section
+  aria-labelledby="hero-title"
+  class="flex flex-col pt-7.5 lg:grid lg:grid-cols-2 lg:items-center lg:gap-columns lg:pt-18"
+>
+  <div class="flex flex-col gap-3.5 px-gutter lg:gap-5.5 lg:px-0">
+    <h1 id="hero-title" class="font-display text-h1 font-semibold lg:text-h1-lg">
+      Помните не только номер, но и <span
+        class="text-plum underline decoration-ochre decoration-4 underline-offset-7 lg:decoration-6 lg:underline-offset-10"
+        >человека</span
+      >
+    </h1>
+    <p class="text-lead text-ink-soft lg:max-w-130 lg:text-lead-lg">
+      Записная книжка, в которой хранится главное о ваших знакомых: как вы встретились, что для них
+      важно, о чём вы говорили.
+    </p>
+    <div class="flex flex-col gap-3.5 pt-2 lg:flex-row lg:flex-wrap lg:items-center lg:gap-5 lg:pt-2.5">
+      <AppButton />
+      <span class="text-center text-caption text-muted lg:text-caption-lg">Бесплатно</span>
+    </div>
+  </div>
+  <ContactCardMock class="mx-gutter-card mt-6 lg:m-0" />
+</section>

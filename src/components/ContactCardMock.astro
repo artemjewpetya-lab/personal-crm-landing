@@ -1,0 +1,74 @@
+---
+// Illustration: a filled-in contact card. Demo data, hidden from screen readers.
+import Icon from "./Icon.astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const tile = "flex flex-col rounded-tile p-3.5 lg:min-h-37.5 lg:justify-between lg:rounded-tile-lg lg:p-5";
+const label = "flex items-center gap-1.5 text-label font-semibold uppercase lg:gap-2 lg:text-label-lg";
+const labelIcon = "size-3.5 lg:size-4";
+const value = "text-tile font-medium lg:text-tile-lg";
+---
+
+<div
+  aria-hidden="true"
+  class:list={[
+    "flex flex-col gap-2 rounded-card bg-card p-3 lg:gap-2.5 lg:rounded-card-lg lg:p-4",
+    className,
+  ]}
+>
+  <div class="flex items-center gap-3 px-1 pt-1 pb-1.5 lg:gap-4 lg:px-1.5 lg:pt-1.5 lg:pb-2">
+    <div
+      class="flex size-12.5 shrink-0 items-center justify-center rounded-full bg-rose font-display text-(length:--text-lead) font-semibold text-white lg:size-15 lg:text-(length:--text-lead-lg)"
+    >
+      АС
+    </div>
+    <div class="flex min-w-0 flex-1 flex-col gap-0.75 lg:gap-1">
+      <span class="font-display text-name font-semibold lg:text-name-lg">Андрей Соколов</span>
+      <span class="text-caption text-muted lg:text-caption-lg">Дизайнер интерфейсов · +7 900 000-00-00</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-2 lg:gap-2.5">
+    <div class:list={[tile, "justify-between gap-3 bg-ink text-paper lg:gap-4"]}>
+      <span class:list={[label, "text-on-navy-label"]}>
+        <Icon name="map-pin" class={labelIcon} />Знакомство
+      </span>
+      <span class={value}>Конференция в Казани, май 2024</span>
+    </div>
+
+    <div class:list={[tile, "justify-between gap-3 bg-ochre text-white lg:gap-4"]}>
+      <span class:list={[label, "text-on-ochre"]}>
+        <Icon name="calendar" class={labelIcon} />День рождения
+      </span>
+      <div class="flex flex-col gap-0.5 lg:gap-1">
+        <span class="font-display text-number font-bold lg:text-number-lg">12</span>
+        <span class="text-(length:--text-tile) font-medium lg:text-(length:--text-tile-lg)">марта</span>
+      </div>
+    </div>
+
+    <div class:list={[tile, "gap-2 bg-dusty lg:gap-4"]}>
+      <span class:list={[label, "text-plum"]}>
+        <Icon name="heart" class={labelIcon} />Важно помнить
+      </span>
+      <span class={value}>Жена Марина, сын Тёма, 6 лет</span>
+    </div>
+
+    <div class:list={[tile, "gap-2 bg-blush lg:gap-3"]}>
+      <span class:list={[label, "text-plum"]}>
+        <Icon name="message" class={labelIcon} />Говорили о
+      </span>
+      <div class="flex flex-col gap-2 lg:gap-2.5">
+        <span class={value}>Марафоне в октябре</span>
+        <span
+          class="self-start rounded-full bg-rose px-2.5 py-1 text-badge font-semibold text-white lg:px-3 lg:py-1.25 lg:text-chip-lg"
+          >Как прошёл?</span
+        >
+      </div>
+    </div>
+  </div>
+</div>

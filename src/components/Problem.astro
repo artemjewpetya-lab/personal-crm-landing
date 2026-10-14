@@ -1,0 +1,75 @@
+---
+import Icon from "./Icon.astro";
+import SectionChip from "./SectionChip.astro";
+
+const contacts = ["Андрей Сервис", "Марина (свадьба)", "Олег???"];
+---
+
+<section
+  aria-labelledby="problem-title"
+  class="layout mx-edge mt-12 grid grid-cols-1 gap-4 rounded-panel bg-ink px-4.5 py-7 text-paper lg:mx-0 lg:mt-section-lg lg:gap-x-columns lg:gap-y-5.5 lg:rounded-panel-lg lg:p-16"
+>
+  <SectionChip class="bg-navy-chip text-rose-light [grid-area:chip]">Знакомо?</SectionChip>
+
+  <h2
+    id="problem-title"
+    class="font-display text-h2 font-semibold text-white [grid-area:title] lg:text-h2-lg"
+  >
+    В телефоне сотни контактов, а за многими из них только имя
+  </h2>
+
+  <ul class="flex flex-col gap-1.5 pt-1 [grid-area:list] lg:gap-2.5 lg:self-center lg:pt-0">
+    {
+      contacts.map((name) => (
+        <li class="flex items-center gap-3 rounded-tile bg-navy-raised p-3 lg:gap-4 lg:rounded-tile-lg lg:px-4.5 lg:py-4">
+          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-navy-avatar text-on-navy-label lg:size-12">
+            <Icon name="user" class="size-4.5 lg:size-5.5" />
+          </span>
+          <span class="flex min-w-0 flex-1 flex-col gap-0.5 lg:gap-0.75">
+            <span class="text-name font-semibold text-white lg:text-button">{name}</span>
+            <span class="text-caption text-on-navy-muted lg:text-chip-lg">Нет заметок</span>
+          </span>
+          <span
+            aria-hidden="true"
+            class="flex size-7 shrink-0 items-center justify-center rounded-full border-(length:--border-ring) border-navy-line text-(length:--text-tile) font-semibold text-on-navy-label lg:size-8 lg:text-name"
+          >
+            ?
+          </span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="pt-1 text-body text-on-navy [grid-area:text] lg:pt-0 lg:text-body-lg">
+    Вы встречаете человека через год и не можете вспомнить, откуда его знаете, как зовут его жену и
+    чем он занимается.
+  </p>
+
+  <div
+    class="flex items-center gap-3 rounded-tile bg-navy-chip p-4 text-rose-light [grid-area:callout] lg:gap-3.5 lg:rounded-tile-lg lg:px-5 lg:py-4.5"
+  >
+    <Icon name="face-sad" class="size-5.5 lg:size-6.5" />
+    <p class="font-display text-callout font-medium lg:text-callout-lg">
+      Становится неловко, а отношения остывают
+    </p>
+  </div>
+</section>
+
+<style>
+  @reference "../styles/global.css";
+
+  /* One markup, two orders: the list sits under the title on mobile and beside the text on desktop */
+  .layout {
+    grid-template-areas: "chip" "title" "list" "text" "callout";
+
+    @variant lg {
+      /* 61fr / 56fr reproduces the 488 / 448 px columns of design/desktop.html */
+      grid-template-columns: minmax(0, 61fr) minmax(0, 56fr);
+      grid-template-areas:
+        "chip list"
+        "title list"
+        "text list"
+        "callout list";
+    }
+  }
+</style>

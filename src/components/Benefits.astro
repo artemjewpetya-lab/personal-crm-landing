@@ -1,0 +1,38 @@
+---
+import Icon from "./Icon.astro";
+
+const item = "flex flex-col rounded-benefit p-4.5 lg:min-h-75 lg:rounded-benefit-lg lg:p-6.5";
+const statementItem = `${item} gap-4 text-white lg:justify-between lg:gap-6`;
+const number = "self-start rounded-full px-2.5 py-1 font-display text-badge font-semibold lg:px-3 lg:py-1.25 lg:text-badge-lg";
+const statement = "font-display text-statement font-medium lg:text-statement-lg";
+const bubble = "self-start rounded-tile rounded-bl-bubble-tail px-4 py-3 text-(length:--text-bubble) lg:text-bubble-lg";
+---
+
+<section
+  aria-labelledby="benefits-title"
+  class="mt-section flex flex-col gap-4 px-gutter lg:mt-section-lg lg:gap-6 lg:px-0"
+>
+  <h2 id="benefits-title" class="font-display text-h2 font-semibold lg:text-h2-lg">Что вы получаете</h2>
+
+  <ol class="-mx-1.5 flex flex-col gap-2 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-2.5">
+    <li class:list={[statementItem, "bg-plum"]}>
+      <span aria-hidden="true" class:list={[number, "bg-plum-raised text-on-plum-accent"]}>01</span>
+      <p class={statement}>Вы не теряете людей, которые для вас важны</p>
+    </li>
+
+    <li class:list={[item, "gap-3 bg-card lg:gap-3.5"]}>
+      <span aria-hidden="true" class:list={[number, "bg-blush text-plum"]}>02</span>
+      <span class:list={[statement, "lg:mt-auto"]}>Разговор начинается с</span>
+      <span class:list={[bubble, "flex items-center gap-2 bg-rose font-semibold text-white"]}>
+        «Как прошёл марафон?»<Icon name="check" class="size-4.5" />
+      </span>
+      <span class="text-name font-medium text-muted lg:text-(length:--text-bubble)">а не с</span>
+      <s class:list={[bubble, "bg-bubble font-medium text-bubble-ink decoration-rose"]}>«Напомни, где мы виделись?»</s>
+    </li>
+
+    <li class:list={[statementItem, "bg-ochre"]}>
+      <span aria-hidden="true" class:list={[number, "bg-ochre-raised text-on-ochre-accent"]}>03</span>
+      <p class={statement}>Знакомые чувствуют внимание, и это укрепляет отношения</p>
+    </li>
+  </ol>
+</section>

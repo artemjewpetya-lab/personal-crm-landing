@@ -1,0 +1,9 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  /* design/*.html rely on the browser's default line height; Preflight would set 1.5 */
+  html {
+    line-height: normal;
+  }
+}

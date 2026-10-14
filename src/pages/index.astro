@@ -1,0 +1,26 @@
+---
+import Base from "../layouts/Base.astro";
+import Benefits from "../components/Benefits.astro";
+import FinalCta from "../components/FinalCta.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Problem from "../components/Problem.astro";
+import Solution from "../components/Solution.astro";
+
+const title = "Помните не только номер, но и человека — Personal CRM";
+const description =
+  "Записная книжка, в которой хранится главное о ваших знакомых: как вы встретились, что для них важно, о чём вы говорили.";
+---
+
+<Base title={title} description={description}>
+  <div class="mx-auto max-w-narrow pb-2 lg:max-w-page lg:px-gutter-lg lg:pb-14">
+    <Header />
+    <main>
+      <Hero />
+      <Problem />
+      <Solution />
+      <Benefits />
+      <FinalCta />
+    </main>
+  </div>
+</Base>
