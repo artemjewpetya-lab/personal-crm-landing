@@ -1,0 +1,46 @@
+# Every push to main: build the static site (dist/) and upload it to the
+# server, where nginx serves it at personalcrm.site. See deploy/deploy.sh.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+# One deploy at a time; a newer push waits for the running one to finish.
+concurrency:
+  group: deploy-landing
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      # v6.1.0 is the first release that supports pnpm 12 (the v6 tag is older).
+      # The pnpm version itself comes from packageManager in package.json.
+      - uses: pnpm/action-setup@v6.1.0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm build
+
+      - name: Run deploy/deploy.sh
+        run: bash deploy/deploy.sh
+        env:
+          DEPLOY_HOST: ${{ vars.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ vars.DEPLOY_USER }}
+          DEPLOY_KNOWN_HOSTS: ${{ vars.DEPLOY_KNOWN_HOSTS }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          VERSION: ${{ github.sha }}
