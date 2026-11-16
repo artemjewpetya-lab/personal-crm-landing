@@ -55,3 +55,13 @@ pnpm preview
 - `deploy/deploy.sh` — заливка на сервер и проверка.
 - На сервере — папка `/var/www/personalcrm/landing` пользователя `landing`. Ключ этого пользователя умеет только записывать файлы в эту папку: ни команд, ни чтения, ни других папок.
 - GitHub → **Settings → Secrets and variables → Actions**: секрет `DEPLOY_SSH_KEY` (ключ, которым GitHub заливает сайт) и переменные `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_KNOWN_HOSTS`, `SITE_URL`.
+
+### Конфиг nginx и заголовки безопасности
+
+Копия конфига nginx лежит в репозитории только для истории: на сервер она сама не едет, выкатка заливает только `dist/`.
+
+- `deploy/nginx/personalcrm.conf` — копия `/etc/nginx/sites-available/personalcrm.conf` на сервере. В нём три сайта: лендинг, приложение (`app.personalcrm.site`) и заглушка для чужих адресов.
+- `deploy/nginx/personalcrm-tls.conf` — копия `/etc/nginx/snippets/personalcrm-tls.conf` (настройки TLS).
+- Лендинг отдаёт заголовки безопасности: HSTS, CSP (встроенные скрипты и стили разрешены, остальное только со своего сайта; шрифты — со своего сайта и `data:`, потому что сборка вшивает один мелкий шрифт в CSS), запрет встраивания во фреймы, `Referrer-Policy`, `nosniff`, `Permissions-Policy`. Версия nginx скрыта (`server_tokens off`).
+- Изменили конфиг на сервере — обновите копию здесь. Правка на сервере: сделать копию файла, внести изменение, `sudo nginx -t`, `sudo systemctl reload nginx`. Прошлая версия до заголовков: `/etc/nginx/personalcrm.conf.bak-2026-11-16`.
+- Если на лендинге появится что-то с чужого адреса (шрифты Google, счётчик, видео), CSP его заблокирует: этот адрес нужно добавить в политику.
